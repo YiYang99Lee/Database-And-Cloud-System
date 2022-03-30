@@ -1,7 +1,7 @@
 const { faker } = require('@faker-js/faker');
 const bcrypt = require("bcryptjs")
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.shin9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.lub5x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 client.connect(async err => {
@@ -11,42 +11,30 @@ client.connect(async err => {
     }
     console.log('Connected to MongoDB')
 
+    const detail = []
     
-    let Name = []
-    let Username = []
-    let Password = []
-    let Address = []
-    //Array to store all the users' data
-
     for (let i = 0; i < 100; i++) {
-        const name = faker.name.findName();
-        const username = faker.internet.userName();
-        const user_password = faker.internet.password();
-        const user_address = faker.address.city();
-        Name.push(name);
-        Username.push(username);
-	    Password.push(user_password);
-	    Address.push(user_address);
+        const name = `${faker.name.firstName()} ${faker.name.lastName()}`;
+        const password = faker.internet.password();
+        const address = faker.address.city();
+        detail[i] = []
+        detail[i][0] = (name)
+        detail[i][1] = (password)
+        detail[i][2] = (address)
     }
     
-    console.log(Name);
-	console.log(Username);
-	console.log(Password);
-    console.log(Address);
-
-	for(let j=0; j < 100; j++) {
-		client.db("database").collection("collection").insertOne({
-			Name: Name[j],
-            Username: Username[j],
-			Password: Password[j],
-			Address: Address[j]
+    for(let j=0; j < 100; j++) {
+		client.db("Name_list").collection("users").insertOne({
+			Name: detail[j][0],
+			Password: detail[j][1],
+			Address: detail[j][2]
 		})
 	}
 
     const saltRounds = 10  
     bcrypt.genSalt(saltRounds, function (saltError, salt){
         for(let k = 0; k < 100; k++){
-            newpass = Password[k]
+            newpass = detail[k][1]
             if(saltError){
                 throw saltError
             }else{
@@ -54,11 +42,11 @@ client.connect(async err => {
                     if (hashError){
                         throw hashError
                     }else {
-                        client.db("database").collection("collection").updateOne({Name: Name[k]}, {$set: {Password: hash}}).then(result => {
+                        client.db("Name_list").collection("users").updateOne({Name: detail[k][0]}, {$set: {Password: hash}}).then(result => {
                         console.log(result)});
                     }
                 })
             }
         }
     })
-});
+})
