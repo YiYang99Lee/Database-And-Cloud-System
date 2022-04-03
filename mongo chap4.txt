@@ -1,0 +1,71 @@
+db.zips.find({"pop":{"$lt":1000}}).count()
+8065
+db.trips.find({"birth year":{"$eq":1998}}).count()
+12
+db.trips.find({"birth year":{"$gt":1998}}).count()
+18
+db.inspections.find({"$and":[{"result":"Out of Business"},{"sector":"Home Improvement Contractor - 100"}]}).count()
+4
+db.zips.find({"pop":{"$gte":5000}},{"pop":{"$lte":1000000}}).count()
+11193
+db.companies.find({"$or":[{"$and":[{"founded_year":2004},{"$or":[{"category_code":"web"},{"category_code":"social"}]}]},{"$and":[{"founded_month":10},{"$or":[{"category_code":"web"},{"category_code":"social"}]}]}]}).count()
+149
+db.companies.find({"$expr":{"$eq":["$twitter_username","$permalink"]}}).count()
+1299
+db.listingsAndReviews.find({"$and":[{"accommodates":{"$gt":6}},{"reviews":{"$size":50}}]}).pretty()
+{
+        "_id" : "4294289",
+        "listing_url" : "https://www.airbnb.com/rooms/4294289",
+        "name" : "Sunset Beach Lodge Retreat",
+        "summary" : "Large 3 bedrooms, 2 bathrooms with Office Space on 1 acre property just 150 yards from Sunset Beach.",
+        "space" : "This amazing lodge style home is one of da kind home on the North Shore. Lovely & quiet, Private with 3 bedroom, 2 bathroom around 2000 Square Foot and 150 yards from famous Sunset Beach. The house is a upstairs Unit (downstairs is a 2 bedroom vacation rental) on our 1 acre of beautifully landscaped garden with tons of fruits like mango trees, orange trees, Jack fruit just to name a few. It is self catered with a fully equipped kitchen, dining area, living room , bathroom, master bedroom, queen bedroom, & double bedroom plus washer and dryer on site. This property has been renovated inside to give our vacationers the comfort of the modern houses with a large LED 60\" TV, wireless internet (50 Mgbytes) and more. You will afford the best location with the best price the North Shore has to offer! The property comes furnished to the highest standard with tasteful furniture throughout the house. Bed linens are of the highest quality as well as the bath towels. Beach towels are provided for e",
+        "description" : "Large 3 bedrooms, 2 bathrooms with Office Space on 1 acre property just 150 yards from Sunset Beach. This amazing lodge style home is one of da kind home on the North Shore. Lovely & quiet, Private with 3 bedroom, 2 bathroom around (Phone number hidden by Airbnb) Square Foot and 150 yards from famous Sunset Beach. The house is a upstairs Unit (downstairs is a 2 bedroom vacation rental) on our 1 acre of beautifully landscaped garden with tons of fruits like mango trees, orange trees, Jack fruit just to name a few. It is self catered with a fully equipped kitchen, dining area, living room , bathroom, master bedroom, queen bedroom, & double bedroom plus washer and dryer on site. This property has been renovated inside to give our vacationers the comfort of the modern houses with a large LED 60\" TV, wireless internet (50 Mgbytes) and more. You will afford the best location with the best price the North Shore has to offer! The property comes furnished to the highest standard with tasteful f",
+        "neighborhood_overview" : "Sunset Beach area is one of the prestigious place in Hawaii...",
+        "notes" : "(Phone number hidden by Airbnb)",
+        "transit" : "",
+        "access" : "The entire upstairs unit. Parking Lot.",
+        "interaction" : "We welcome you with sincere aloha and will go above & beyond to make the best of your stay!! I don't live on the property, but am not far away in case you need anything.",
+        "house_rules" : "No smoke in the house!  No loud parties!",
+        "property_type" : "House",
+        "room_type" : "Entire home/apt",
+        "bed_type" : "Real Bed",
+        "minimum_nights" : "3",
+        "maximum_nights" : "1125",
+        "cancellation_policy" : "strict_14_with_grace_period",
+        "last_scraped" : ISODate("2019-03-06T05:00:00Z"),
+        "calendar_last_scraped" : ISODate("2019-03-06T05:00:00Z"),
+        "first_review" : ISODate("2015-05-02T04:00:00Z"),
+        "last_review" : ISODate("2019-02-18T05:00:00Z"),
+        "accommodates" : 8,
+        "bedrooms" : 3,
+        "beds" : 6,
+        "number_of_reviews" : 50,
+        "bathrooms" : NumberDecimal("2.0"),
+        "amenities" : [
+                "TV",
+                "Cable TV",
+                "Internet",
+                "Wifi",
+                "Kitchen",
+                "Free parking on premises",
+                "Family/kid friendly",
+                "Washer",
+                "Dryer",
+                "Smoke detector",
+                "Carbon monoxide detector",
+                "First aid kit",
+                "Essentials",
+                "Shampoo",
+                "24-hour check-in",
+                "Hangers",
+                "Hair dryer",
+                "Iron",
+                "Laptop friendly workspace",
+                "Self check-in",
+                "Lockbox"
+        ],
+        "price" : NumberDecimal("250.00"),
+        "security_deposit" : NumberDecimal("500.00"),
+        "cleaning_fee" : NumberDecimal("300.00"),
+
+db.trips.find({})
