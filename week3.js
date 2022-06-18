@@ -1,7 +1,7 @@
 const { faker } = require('@faker-js/faker');
 const bcrypt = require("bcryptjs")
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.shin9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.shin9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";// own uri
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 client.connect(async err => {
